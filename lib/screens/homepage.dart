@@ -45,13 +45,6 @@ class _HomePageState extends State<HomePage> {
                               color: Colors.black,
                               fontWeight: FontWeight.bold),
                         )
-                        // Text(
-                        //   "${mapOfWeather!["name"]}",
-                        //   style: TextStyle(
-                        //       fontSize: 25,
-                        //       color: Colors.white,
-                        //       fontWeight: FontWeight.bold),
-                        // ),
                       ],
                     ),
                     Spacer(),
@@ -85,51 +78,6 @@ class _HomePageState extends State<HomePage> {
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: DetailsWeather(),
-
-              /*Container(
-                height: 300,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 2,
-                    color: Colors.white,
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    Text(
-                      "${Jiffy(DateTime.now()).format('MMM do yy, h:mm a')}",
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      "${weatherMap!["main"]["temp"]} °C",
-                      style: TextStyle(
-                        fontSize: 60,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      "${weatherMap!["weather"]["0"]["description"]} ",
-                      style: TextStyle(
-                        fontSize: 60,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Row(
-                      children: [Image.asset("assets/icons/wind.png")],
-                    ),
-                  ],
-                ),
-              ),*/
             ),
           ),
         ],
