@@ -3,6 +3,7 @@ import 'package:jiffy/jiffy.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
+import 'package:weather_forcust/screens/forcst_dtails.dart';
 
 class DetailsWeather extends StatefulWidget {
   const DetailsWeather({Key? key}) : super(key: key);
@@ -85,121 +86,131 @@ class _DetailsWeatherState extends State<DetailsWeather> {
                 backgroundColor: Colors.white.withOpacity(0.3),
                 body: Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(Jiffy(DateTime.now()).yMMMMEEEEdjm,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ForcustDetails(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(Jiffy(DateTime.now()).yMMMMEEEEdjm,
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w200)),
+                          SizedBox(
+                            height: 30,
+                          ),
+                          Text(
+                            "${mapOfWeather!["main"]["temp"]} °C",
                             style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w200)),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Text(
-                          "${mapOfWeather!["main"]["temp"]} °C",
-                          style: TextStyle(
-                            fontSize: 35,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                              fontSize: 35,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Text(
-                          "${mapOfWeather!["weather"][0]["description"]}",
-                          style: TextStyle(
-                            fontSize: 22,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                          SizedBox(
+                            height: 30,
                           ),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                child: Row(
-                                  children: [
-                                    Image.asset("assets/icons/wind.png"),
-                                    SizedBox(
-                                      width: 15,
-                                    ),
-                                    Text(
-                                      "Wind",
-                                      style: TextStyle(
-                                        fontSize: 22,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w400,
+                          Text(
+                            "${mapOfWeather!["weather"][0]["description"]}",
+                            style: TextStyle(
+                              fontSize: 22,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 30,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  child: Row(
+                                    children: [
+                                      Image.asset("assets/icons/wind.png"),
+                                      SizedBox(
+                                        width: 15,
                                       ),
-                                    ),
-                                  ],
+                                      Text(
+                                        "Wind",
+                                        style: TextStyle(
+                                          fontSize: 22,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                            Container(
-                              height: 40,
-                              width: 2,
-                              color: Colors.white,
-                            ),
-                            Text(
-                                "${mapOfForecast!["list"][0]["wind"]["speed"]} km/h",
-                                style: TextStyle(
-                                    fontSize: 25,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600)),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                  width: 16,
-                                ),
-                                Image.asset("assets/icons/hum.png"),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                Text(
-                                  "Hum",
+                              Container(
+                                height: 40,
+                                width: 2,
+                                color: Colors.white,
+                              ),
+                              Text(
+                                  "${mapOfForecast!["list"][0]["wind"]["speed"]} km/h",
                                   style: TextStyle(
-                                    fontSize: 22,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w400,
+                                      fontSize: 25,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600)),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    width: 16,
                                   ),
-                                ),
-                                SizedBox(
-                                  width: 47,
-                                ),
-                                Container(
-                                  height: 40,
-                                  width: 2,
-                                  color: Colors.white,
-                                ),
-                                SizedBox(
-                                  width: 33,
-                                ),
-                                Text(
-                                  "${mapOfWeather!["main"]["humidity"]} %",
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
+                                  Image.asset("assets/icons/hum.png"),
+                                  SizedBox(
+                                    width: 15,
                                   ),
-                                ),
-                              ],
+                                  Text(
+                                    "Hum",
+                                    style: TextStyle(
+                                      fontSize: 22,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 47,
+                                  ),
+                                  Container(
+                                    height: 40,
+                                    width: 2,
+                                    color: Colors.white,
+                                  ),
+                                  SizedBox(
+                                    width: 33,
+                                  ),
+                                  Text(
+                                    "${mapOfWeather!["main"]["humidity"]} %",
+                                    style: TextStyle(
+                                      fontSize: 25,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),

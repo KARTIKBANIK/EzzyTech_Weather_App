@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                           "Dhaka",
                           style: TextStyle(
                               fontSize: 25,
-                              color: Colors.black,
+                              color: Colors.white,
                               fontWeight: FontWeight.bold),
                         )
                       ],
