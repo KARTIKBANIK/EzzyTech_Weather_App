@@ -65,14 +65,14 @@ class ForcustDetails extends StatelessWidget {
       backgroundColor: Color(0xff47BFDF),
       body: Column(
         children: [
-          Expanded(
+          const Expanded(
             flex: 1,
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
+              padding: EdgeInsets.all(8.0),
+              child: SizedBox(
                 height: 40,
                 width: double.infinity,
-                child: const Row(
+                child: Row(
                   children: [
                     Row(
                       children: [
@@ -107,7 +107,7 @@ class ForcustDetails extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(
-                child: Container(
+                child: SizedBox(
                   width: double.infinity,
                   child: Column(
                     children: [
@@ -123,7 +123,7 @@ class ForcustDetails extends StatelessWidget {
                                 fw: FontWeight.bold,
                                 lspace: 0.0,
                               ),
-                              Spacer(),
+                              const Spacer(),
                               CustomText(
                                 txt: "Sep, 12",
                                 textColor: Colors.white,
@@ -163,8 +163,8 @@ class ForcustDetails extends StatelessWidget {
                                             MainAxisAlignment.spaceEvenly,
                                         children: [
                                           Text(
-                                            "${cilcious[index]}",
-                                            style: TextStyle(
+                                            cilcious[index],
+                                            style: const TextStyle(
                                               fontWeight: FontWeight.w200,
                                               color: Colors.white,
                                               fontSize: 20,
@@ -174,8 +174,8 @@ class ForcustDetails extends StatelessWidget {
                                             img[index],
                                           ),
                                           Text(
-                                            "${time[index]}",
-                                            style: TextStyle(
+                                            time[index],
+                                            style: const TextStyle(
                                               fontWeight: FontWeight.w200,
                                               color: Colors.white,
                                               fontSize: 20,
@@ -205,7 +205,7 @@ class ForcustDetails extends StatelessWidget {
                   flex: 1,
                   child: Padding(
                     padding: const EdgeInsets.all(12.0),
-                    child: Container(
+                    child: SizedBox(
                       width: double.infinity,
                       child: Row(
                         children: [
@@ -216,8 +216,8 @@ class ForcustDetails extends StatelessWidget {
                             fw: FontWeight.bold,
                             lspace: 0.0,
                           ),
-                          Spacer(),
-                          FaIcon(
+                          const Spacer(),
+                          const FaIcon(
                             Icons.calendar_month,
                             color: Colors.white,
                           ),
@@ -228,33 +228,31 @@ class ForcustDetails extends StatelessWidget {
                 ),
                 Expanded(
                   flex: 5,
-                  child: Container(
-                    child: ListView.builder(
-                      itemCount: cilcious.length,
-                      itemBuilder: (_, index) {
-                        return ListTile(
-                          leading: Text(
-                            "${date[index]}",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w200,
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
+                  child: ListView.builder(
+                    itemCount: cilcious.length,
+                    itemBuilder: (_, index) {
+                      return ListTile(
+                        leading: Text(
+                          date[index],
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w200,
+                            color: Colors.white,
+                            fontSize: 20,
                           ),
-                          title: Image.asset(
-                            img_1[index],
+                        ),
+                        title: Image.asset(
+                          img_1[index],
+                        ),
+                        trailing: Text(
+                          cilcious[index],
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w200,
+                            color: Colors.white,
+                            fontSize: 20,
                           ),
-                          trailing: Text(
-                            "${cilcious[index]}",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w200,
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
-                          ),
-                        );
-                      },
-                    ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
